@@ -72,27 +72,27 @@ class App extends Component {
           </label>
           <input type="submit" value="Submit"/>
        </form>
-       games played: {this.state.playerStats["games_played"]}
+       Games Played: {this.state.playerStats["games_played"]}
        <br />
-       points averaged: {this.state.playerStats["pts"]}
+        Points: {this.state.playerStats["pts"]}
        <br />
-       rebounds averaged: {this.state.playerStats["reb"]}
+        Rebounds: {this.state.playerStats["reb"]}
        <br />
-       assists averaged: {this.state.playerStats["ast"]}
+        Assists: {this.state.playerStats["ast"]}
        <br />
-       blocks averaged: {this.state.playerStats["blk"]}
+        Blocks: {this.state.playerStats["blk"]}
        <br />
-       FG%: {this.state.playerStats["fg_pct"]*100}
+        FG%: {this.state.playerStats["fg_pct"] * 100}
        <br />
-      3pt%: {this.state.playerStats["fg3_pct"]*100}
+        3PT%: {this.state.playerStats["fg3_pct"] * 100}
       <br />
-      minutes averaged: {this.state.playerStats["min"]}
+        Minutes: {this.state.playerStats["min"]}
       <br />
-      steals averaged: {this.state.playerStats["stl"]}
+        Steals: {this.state.playerStats["stl"]}
       <br />
-      turnover averaged: {this.state.playerStats["turnover"]}
+        Turnovers: {this.state.playerStats["turnover"]}
       <br />
-      FT%: {this.state.playerStats["ft_pct"]*100}
+        FT%: {this.state.playerStats["ft_pct"] * 100}
     </div>
   );
 }
