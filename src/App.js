@@ -4,6 +4,7 @@ import axios from "axios";
 
 class App extends Component {
 
+  // initializes the state with playerName set as null & playerStats as empty object
     constructor (props) {
       super(props)
       this.state = {
@@ -14,6 +15,7 @@ class App extends Component {
     }
   }
 
+  // calls playerId and logs playername
   handleSubmit1 = (e) => {
       e.preventDefault();
       this.getPlayer1Id()
@@ -46,6 +48,7 @@ class App extends Component {
     }
   }
 
+  // makes GET request to balldontlie API to retrieve ID based on name submitted
   getPlayer1Id = () => {
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${this.state.player1Name}`)
     .then(async res => {
@@ -81,6 +84,7 @@ class App extends Component {
   }
 
 
+// GET request to balldontlie API to retrieve player stats based on ID
   getPlayer1Stats = (player1Id) => {
     axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=${player1Id}`)
     .then(async (res) => {
