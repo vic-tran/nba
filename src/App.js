@@ -72,7 +72,7 @@ class App extends Component {
           </label>
           <input type="submit" value="Submit"/>
        </form>
-       Games Played: {this.state.playerStats["games_played"]}
+        Games Played: {this.state.playerStats["games_played"]}
        <br />
         Points: {this.state.playerStats["pts"]}
        <br />
@@ -82,9 +82,9 @@ class App extends Component {
        <br />
         Blocks: {this.state.playerStats["blk"]}
        <br />
-        FG%: {this.state.playerStats["fg_pct"] * 100}
+        FG%: {this.state.playerStats["fg_pct"] ? (this.state.playerStats["fg_pct"]*100).toFixed(2) : ''}
        <br />
-        3PT%: {this.state.playerStats["fg3_pct"] * 100}
+        3PT%: {this.state.playerStats["fg3_pct"] ? (this.state.playerStats["fg3_pct"]*100).toFixed(2) : ''}
       <br />
         Minutes: {this.state.playerStats["min"]}
       <br />
@@ -92,7 +92,7 @@ class App extends Component {
       <br />
         Turnovers: {this.state.playerStats["turnover"]}
       <br />
-        FT%: {this.state.playerStats["ft_pct"] * 100}
+        FT%:{this.state.playerStats["ft_pct"] ? (this.state.playerStats["ft_pct"]*100).toFixed(2) : ''}
     </div>
   );
 }
