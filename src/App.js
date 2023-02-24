@@ -3,18 +3,19 @@ import axios from "axios";
 
 
 class App extends Component {
+
     constructor (props) {
       super(props)
       this.state = {
-        playerName: null,
-        playerStats: {}
+        player1Name: null,
+        player1Stats: {}
     }
   }
 
   handleSubmit = (e) => {
       e.preventDefault();
-      this.getPlayerId()
-      console.log(this.state.playerName)
+      this.getPlayer1Id()
+      console.log(this.state.player1Name)
   }
 
 
@@ -22,14 +23,14 @@ class App extends Component {
   handleChange = (event) => {
       const replace = event.target.value.split(" ").join("_");
       if(replace.length > -2){
-        this.setState({playerName: replace})
+        this.setState({player1Name: replace})
       } else {
         alert("Please enter a valid player name")
       }
   }
 
-  getPlayerId = () => {
-    axios.get(`https://www.balldontlie.io/api/v1/players?search=${this.state.playerName}`)
+  getPlayer1Id = () => {
+    axios.get(`https://www.balldontlie.io/api/v1/players?search=${this.state.player1Name}`)
     .then(async res => {
      // console.log(res.data.data)
       if(res.data.data[0]=== undefined){
@@ -37,19 +38,19 @@ class App extends Component {
       } else if(res.data.data.length > 1) {
         alert("Please enter correct name!")
       } else {
-        await this.getPlayerStats(res.data.data[0].id)
+        await this.getPlayer1Stats(res.data.data[0].id)
       }
-      await this.getPlayerStats(res.data.data[0].id)
+      await this.getPlayer1Stats(res.data.data[0].id)
     }).catch(err => {
       console.log(err)
     })
   }
 
-  getPlayerStats = (playerId) => {
-    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=${playerId}`)
+  getPlayer1Stats = (player1Id) => {
+    axios.get(`https://www.balldontlie.io/api/v1/season_averages?season=2022&player_ids[]=${player1Id}`)
     .then(async (res) => {
        console.log(res.data.data)
-      this.setState({ playerStats: res.data.data[0]})
+      this.setState({ player1Stats: res.data.data[0]})
     }).catch(err => {
       console.log(err)
     })
@@ -72,30 +73,30 @@ class App extends Component {
           </label>
           <input type="submit" value="Submit"/>
        </form>
-        Games Played: {this.state.playerStats["games_played"]}
+        Games Played: {this.state.player1Stats["games_played"]}
        <br />
-        Points: {this.state.playerStats["pts"]}
+        Points: {this.state.player1Stats["pts"]}
        <br />
-        Rebounds: {this.state.playerStats["reb"]}
+        Rebounds: {this.state.player1Stats["reb"]}
        <br />
-        Assists: {this.state.playerStats["ast"]}
+        Assists: {this.state.player1Stats["ast"]}
        <br />
-        Blocks: {this.state.playerStats["blk"]}
+        Blocks: {this.state.player1Stats["blk"]}
        <br />
-        FG%: {this.state.playerStats["fg_pct"] ? (this.state.playerStats["fg_pct"]*100).toFixed(2) : ''}
+        FG%: {this.state.player1Stats["fg_pct"] ? (this.state.player1Stats["fg_pct"]*100).toFixed(2) : ''}
        <br />
-        3PT%: {this.state.playerStats["fg3_pct"] ? (this.state.playerStats["fg3_pct"]*100).toFixed(2) : ''}
+        3PT%: {this.state.player1Stats["fg3_pct"] ? (this.state.player1Stats["fg3_pct"]*100).toFixed(2) : ''}
       <br />
-        Minutes: {this.state.playerStats["min"]}
+        Minutes: {this.state.player1Stats["min"]}
       <br />
-        Steals: {this.state.playerStats["stl"]}
+        Steals: {this.state.player1Stats["stl"]}
       <br />
-        Turnovers: {this.state.playerStats["turnover"]}
+        Turnovers: {this.state.player1Stats["turnover"]}
       <br />
-        FT%:{this.state.playerStats["ft_pct"] ? (this.state.playerStats["ft_pct"]*100).toFixed(2) : ''}
+        FT%:{this.state.player1Stats["ft_pct"] ? (this.state.player1Stats["ft_pct"]*100).toFixed(2) : ''}
     </div>
-  );
-}
+    );
+  }
 }
 
 export default App;
