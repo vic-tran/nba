@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-
+import PlayerPics from "../assets/PlayerPics.txt";
 
 
 class Home extends Component {
