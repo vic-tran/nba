@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
-import PlayerPics from "../assets/PlayerPics.txt";
+// import PlayerPics from "../assets/PlayerPics.json";
+
 
 
 class Home extends Component {
@@ -11,8 +12,10 @@ class Home extends Component {
       this.state = {
         player1Name: null,
         player1Stats: {},
+        player1Picture: null,
         player2Name: null,
         player2Stats:{},
+        player2Picture: null,
     }
   }
 
@@ -21,19 +24,21 @@ class Home extends Component {
   handleSubmit1 = (e) => {
       e.preventDefault();
       this.getPlayer1Id()
+      this.getPlayerPic(this.state.player1Name, 1)
       console.log(this.state.player1Name)
   }
 
   handleSubmit2 = (e) => {
     e.preventDefault();
     this.getPlayer2Id()
+    this.getPlayerPic(this.state.player2Name, 2)
     console.log(this.state.player2Name)
   }
 
 
   // change null to player name submitted
   handleChange1 = (event) => {
-      const replace = event.target.value.split(" ").join("_");
+      const replace = event.target.value.split(" ").join("_").toLowerCase();
       if(replace.length > -2){
         this.setState({player1Name: replace})
       } else {
@@ -42,13 +47,28 @@ class Home extends Component {
   }
 
   handleChange2 = (event) => {
-    const replace = event.target.value.split(" ").join("_");
+    const replace = event.target.value.split(" ").join("_").toLowerCase();
     if(replace.length > -2){
       this.setState({player2Name: replace})
     } else {
       alert("Please enter a valid player name")
     }
   }
+
+  getPlayerPic = (playerName, num) => {
+    const PlayerPics = require("../assets/PlayerPics.json");
+    const player_dict = JSON.parse(JSON.stringify(PlayerPics));
+    const pic_src = player_dict[playerName];
+    console.log(pic_src);
+    if(pic_src !== null) {
+      if (num === 1){
+        this.player1Picture = pic_src;
+      }else {
+        this.player2Picture = pic_src;
+      }
+    }
+  }
+
 
   // makes GET request to balldontlie API to retrieve ID based on name submitted
   getPlayer1Id = () => {
@@ -125,6 +145,8 @@ class Home extends Component {
           </label>
           <input type="submit" value="Submit"/>
        </form>
+            <img alt="" src={this.player1Picture} />
+          <br />
             Games Played: {this.state.player1Stats["games_played"]}
           <br />
             Points: {this.state.player1Stats["pts"]}
@@ -161,6 +183,8 @@ class Home extends Component {
           </label>
           <input type="submit" value="Submit"/>
        </form>
+          <img alt="" src={this.player2Picture} />
+          <br />
             Games Played: {this.state.player2Stats["games_played"]}
           <br />
             Points: {this.state.player2Stats["pts"]}
