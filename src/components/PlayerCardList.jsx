@@ -21,7 +21,7 @@ const PlayerList = () => {
   return (
     <div>
       <h2 className="flex justify-center text-3xl">
-        Players
+        NBA 2022 Player Stats
         <button className="flex justify-center cursor-pointer mb-10" onClick={handleAddPlayer}>+</button>
       </h2>
        
