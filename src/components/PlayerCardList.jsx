@@ -1,45 +1,45 @@
-import React, { Component } from 'react';
-import PlayerCard from './PlayerCard';
+import React, { useState } from "react";
+import PlayerCard from "./PlayerCard";
 
+const PlayerList = () => {
+  const [players, setPlayers] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-class PlayerCardList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          players: []
-        };
-      }
-    
-      addPlayer = () => {
-        const newPlayer = <PlayerCard />;
-        this.setState(prevState => ({
-          players: [...prevState.players, newPlayer]
-        }));
-      };
-    
-      removePlayer = () => {
-        this.setState(prevState => ({
-          players: prevState.players.slice(0, -1)
-        }));
-      };
-    
-      render() {
-        const { players } = this.state;
-        return (
-          <div>
-            <div>
-              <button onClick={this.addPlayer}>Add Player</button>
-              <button onClick={this.removePlayer}>Remove Player</button>
-            </div>
-            <div style={{ display: "flex" }}>
-              {players.map((player, index) => (
-                <div key={index} style={{ display: "inline-block" }}>
-                  {player}
-                </div>
-              ))}
-            </div>
+  const handleAddPlayer = () => {
+    setPlayers([...players, inputValue]);
+    setInputValue("");
+  };
+
+  const handleDeletePlayer = (index) => {
+    const newPlayers = [...players];
+    newPlayers.splice(index, 1);
+    setPlayers(newPlayers);
+  };
+
+  const MAX_PLAYERS = 4; // set the maximum number of player cards you can add to 3
+
+  return (
+    <div>
+      <h2 className="flex justify-center text-3xl">
+        Players
+        <button className="flex justify-center cursor-pointer" onClick={handleAddPlayer}>+</button>
+      </h2>
+       
+      <div>
+        
+      </div>
+      <div className="flex">
+        {players.slice(0, MAX_PLAYERS).map((player, index) => (
+          <div key={index} className="inline-Block">
+            <PlayerCard playerName={player} />
+            <button className="cursor-pointer" onClick={() => handleDeletePlayer(index)}>
+              Delete Player
+            </button>
           </div>
-        );
-      }
-    }
-export default PlayerCardList;
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PlayerList;

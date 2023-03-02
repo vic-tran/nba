@@ -5,7 +5,7 @@ import PlayerCardList from "./PlayerCardList";
 
 function Home () {
   return (
-    <div className="home">
+    <div className="">
       <PlayerCardList />
       <PlayerCard />
     </div>
