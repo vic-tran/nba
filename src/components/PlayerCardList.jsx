@@ -22,17 +22,17 @@ const PlayerList = () => {
     <div>
       <h2 className="flex justify-center text-3xl">
         Players
-        <button className="flex justify-center cursor-pointer" onClick={handleAddPlayer}>+</button>
+        <button className="flex justify-center cursor-pointer mb-10" onClick={handleAddPlayer}>+</button>
       </h2>
        
       <div>
         
       </div>
-      <div className="flex">
+      <div className="flex justify-center">
         {players.slice(0, MAX_PLAYERS).map((player, index) => (
           <div key={index} className="inline-Block">
             <PlayerCard playerName={player} />
-            <button className="cursor-pointer" onClick={() => handleDeletePlayer(index)}>
+            <button className="cursor-pointer font-semibold" onClick={() => handleDeletePlayer(index)}>
               Delete Player
             </button>
           </div>

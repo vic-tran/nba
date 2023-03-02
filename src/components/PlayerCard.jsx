@@ -89,24 +89,25 @@ class PlayerCard extends Component {
 
   render () {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-5">
 
       <div className="player">
        <form onSubmit={this.handleSubmit}>
           <label className="font-bold">
             Name:
             <input 
+              className="font-normal"
               type="text"
               value = {this.state.value}
               onChange={this.handleChange}
               placeholder="Enter Player Name"
               />
           </label>
-          <input type="submit" value="Submit" className="cursor-pointer font-bold"/>
+          <input type="submit" value="Submit" className="cursor-pointer font-semibold mr-5"/>
        </form>
             <img alt="" src={this.playerPicture} />
           <br />
-        <div className="flex font-bold">
+        <div className="flex font-semibold">
             Games Played: {this.state.playerStats["games_played"]}
           <br />
             Points: {this.state.playerStats["pts"]}
