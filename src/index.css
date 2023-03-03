@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.playerCard {
+    border-radius: 20px;
+    border: 1px solid rgba(54,69,98, 0.18);
+    padding: 1%;
+    margin-top:15px;
+    margin-bottom: 10px;
+    background-color: #27354D;
+    background: linear-gradient(
+        180deg,
+        rgba(54, 69, 98, 0) 10%,
+        rgba(54,69,98, 1) 100%
+    );
+}
+
+.addPlayer {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.5);
+    margin-left:20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: inset -4px -4px 10px #FFFF, inset 4px 4px 10px 1px #FFFF;
+}

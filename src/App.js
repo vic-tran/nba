@@ -4,7 +4,7 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <html className="scroll-smooth">
+    <html>
       <div>
         <Home />
       </div>

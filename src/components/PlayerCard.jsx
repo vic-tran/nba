@@ -13,6 +13,8 @@ class PlayerCard extends Component {
         playerName: null,
         playerStats: {},
         playerPicture: null,
+        playerId: null,
+        teamName: null,
     }
   }
 
@@ -63,9 +65,11 @@ class PlayerCard extends Component {
       } else if(res.data.data.length > 1) {
         alert("Please enter correct name!")
       } else {
-        await this.getPlayerStats(res.data.data[0].id)
+        const playerId = res.data.data[0].id;
+        // this.setState({ playerId: res.data.data[0].id})
+        await this.getPlayerStats(playerId)
+        this.getTeam(playerId)
       }
-      await this.getPlayerStats(res.data.data[0].id)
     }).catch(err => {
       console.log(err)
     })
@@ -84,14 +88,27 @@ class PlayerCard extends Component {
     })
   }
 
+// get request to balldontlie API to retrieve player teamName based on Id
+
+  getTeam = (playerId) => {
+    axios
+    .get(`https://www.balldontlie.io/api/v1/players/${playerId}`)
+    .then(async (res) => {
+       console.log(res.data.team.full_name)
+      this.setState({ teamName: res.data.team.full_name })
+    }).catch(err => {
+      console.log(err)
+    });
+  };
+
 
 
 
   render () {
   return (
-    <div className="flex justify-center mt-5">
+    <div className="flex justify-center">
 
-      <div className="player">
+      <div className="playerCard">
        <form onSubmit={this.handleSubmit}>
           <label className="font-bold">
             Name:
@@ -108,6 +125,8 @@ class PlayerCard extends Component {
             <img alt="" src={this.playerPicture} />
           <br />
         <div className="flex font-semibold">
+           Team: {this.state.teamName}
+          <br/>
             Games Played: {this.state.playerStats["games_played"]}
           <br />
             Points: {this.state.playerStats["pts"]}

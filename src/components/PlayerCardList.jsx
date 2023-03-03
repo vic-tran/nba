@@ -16,24 +16,24 @@ const PlayerList = () => {
     setPlayers(newPlayers);
   };
 
-  const MAX_PLAYERS = 4; // set the maximum number of player cards you can add to 3
+  const MAX_PLAYERS = 5; // set the maximum number of player cards you can add to 3
 
   return (
     <div>
-      <h2 className="flex justify-center text-3xl">
+      <h2 className="flex justify-center text-3xl mt-5" >
         NBA 2022 Player Stats
-        <button className="flex justify-center cursor-pointer mb-10" onClick={handleAddPlayer}>+</button>
       </h2>
-       
       <div>
-        
+      <button className="addPlayer" onClick={handleAddPlayer}>+</button>
       </div>
-      <div className="flex justify-center">
+      
+      <div className="flex flex-wrap justify-center">
         {players.slice(0, MAX_PLAYERS).map((player, index) => (
-          <div key={index} className="inline-Block">
+          <div key={index} className="inline-flex items-center flex-col mr-10 space-x-4">
             <PlayerCard playerName={player} />
-            <button className="cursor-pointer font-semibold" onClick={() => handleDeletePlayer(index)}>
-              Delete Player
+            <button className="cursor-pointer font-semibold text-blue-300" 
+                onClick={() => handleDeletePlayer(index)}>
+                    Delete Player
             </button>
           </div>
         ))}
