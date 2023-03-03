@@ -21,7 +21,7 @@ const PlayerList = () => {
 
   return (
     <div>
-      <h2 className="flex justify-center text-4xl mt-5 text-white">NBA 2022-2023 Player Stats</h2>
+      <h2 className="flex justify-center text-4xl mt-5 text-white ml-5">NBA 2022-2023 Player Stats</h2>
       <div>
         <button className="addPlayer" onClick={handleAddPlayer}>
           Add Player
