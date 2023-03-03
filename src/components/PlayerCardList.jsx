@@ -1,39 +1,42 @@
 import React, { useState } from "react";
 import PlayerCard from "./PlayerCard";
+import { v4 as uuidv4 } from "uuid";
 
 const PlayerList = () => {
   const [players, setPlayers] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const handleAddPlayer = () => {
-    setPlayers([...players, inputValue]);
+    const newPlayer = { id: uuidv4(), name: inputValue };
+    setPlayers([...players, newPlayer]);
     setInputValue("");
   };
 
-  const handleDeletePlayer = (index) => {
-    const newPlayers = [...players];
-    newPlayers.splice(index, 1);
+  const handleDeletePlayer = (playerToDelete) => {
+    const newPlayers = players.filter((player) => player.id !== playerToDelete.id);
     setPlayers(newPlayers);
   };
 
-  const MAX_PLAYERS = 5; // set the maximum number of player cards you can add to 3
+  const MAX_PLAYERS = 5;
 
   return (
     <div>
-      <h2 className="flex justify-center text-3xl mt-5" >
-        NBA 2022 Player Stats
-      </h2>
+      <h2 className="flex justify-center text-3xl mt-5">NBA 2022 Player Stats</h2>
       <div>
-      <button className="addPlayer" onClick={handleAddPlayer}>+</button>
+        <button className="addPlayer" onClick={handleAddPlayer}>
+          +
+        </button>
       </div>
-      
+
       <div className="flex flex-wrap justify-center">
-        {players.slice(0, MAX_PLAYERS).map((player, index) => (
-          <div key={index} className="inline-flex items-center flex-col mr-10 space-x-4">
-            <PlayerCard playerName={player} />
-            <button className="cursor-pointer font-semibold text-blue-300" 
-                onClick={() => handleDeletePlayer(index)}>
-                    Delete Player
+        {players.slice(0, MAX_PLAYERS).map((player) => (
+          <div key={player.id} className="inline-flex items-center flex-col mr-10 space-x-4">
+            <PlayerCard playerName={player.name} />
+            <button
+              className="cursor-pointer font-semibold text-blue-300"
+              onClick={() => handleDeletePlayer(player)}
+            >
+              Delete Player
             </button>
           </div>
         ))}
