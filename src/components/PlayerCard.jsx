@@ -113,7 +113,7 @@ class PlayerCard extends Component {
           <label className="font-bold">
             Name:
             <input 
-              className="font-normal"
+              className="playerCard"
               type="text"
               value = {this.state.value}
               onChange={this.handleChange}

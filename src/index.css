@@ -4,6 +4,7 @@
 
 
 .playerCard {
+    color: white;
     border-radius: 20px;
     border: 1px solid rgba(54,69,98, 0.18);
     padding: 1%;
@@ -18,6 +19,7 @@
 }
 
 .addPlayer {
+    color: white;
     width: 60px;
     height: 60px;
     border-radius: 30px;
@@ -28,4 +30,12 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     box-shadow: inset -4px -4px 10px #FFFF, inset 4px 4px 10px 1px #FFFF;
+}
+
+.screen {
+   
+    background-color: #1E2A3E;
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    
 }
