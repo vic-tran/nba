@@ -24,8 +24,9 @@ const PlayerList = () => {
       <h2 className="flex justify-center text-3xl mt-5">NBA 2022-2023 Player Stats</h2>
       <div>
         <button className="addPlayer" onClick={handleAddPlayer}>
-          +
+          Add Player
         </button>
+        
       </div>
 
       <div className="flex flex-wrap justify-center">
@@ -33,7 +34,7 @@ const PlayerList = () => {
           <div key={player.id} className="inline-flex items-center flex-col mr-10 space-x-4">
             <PlayerCard playerName={player.name} />
             <button
-              className="cursor-pointer font-semibold text-blue-300"
+              className="cursor-pointer font-semibold text-blue-300 mb-5"
               onClick={() => handleDeletePlayer(player)}
             >
               Delete Player
