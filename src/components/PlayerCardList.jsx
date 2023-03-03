@@ -34,7 +34,7 @@ const PlayerList = () => {
           <div key={player.id} className="inline-flex items-center flex-col mr-10 space-x-4">
             <PlayerCard playerName={player.name} />
             <button
-              className="cursor-pointer font-semibold text-blue-300 mb-5"
+              className="cursor-pointer font-bold text-blue-300 mb-5"
               onClick={() => handleDeletePlayer(player)}
             >
               Delete Player
