@@ -36,8 +36,8 @@
 
 .app {
     position: absolute;
-    background: rgb(63,94,251);
-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(235,100,64,1) 0%, rgba(73,113,116,1) 100%);
     min-width: 100%;
     min-height: 200%;
 }
