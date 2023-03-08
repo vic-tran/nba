@@ -7,14 +7,14 @@
     margin-left: 5px;
     color: white;
     border-radius: 20px;
-    border: 1px solid rgba(54,69,98, 0.18);
+    border: 2px solid rgba(54,69,98, 0.18);
     padding: 1%;
     margin-top:10px;
     background-color: #27354D;
     background: linear-gradient(
         180deg,
-        rgba(54, 69, 98, 0) 10%,
-        rgba(54,69,98, 1) 100%
+        rgba(54, 69, 98, 0) 1%,
+        rgba(54,69,98, 1) 40%
     );
 }
 
@@ -37,8 +37,9 @@
 .app {
     position: absolute;
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(235,100,64,1) 0%, rgba(73,113,116,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(235,100,64,1) 0%, rgba(73,113,116,1) 100%);
     min-width: 100%;
-    min-height: 200%;
+    min-height: 100%;
+    background-size: cover;
 }
 
